@@ -15,7 +15,7 @@ pipeline {
                     sh """
                     #\$(aws ecr get-login --no-include-email --region us-east-1)
                     #\$(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 856410398254.dkr.ecr.us-east-1.amazonaws.com)
-                    aws ecr get-login --no-include-email --region us-east-1 | awk '{printf $6}' | docker login -u AWS ${ACCOUNT_REGISTRY_PREFIX} --password-stdin
+                    aws ecr get-login --no-include-email --region us-east-1 | awk '{printf \$6}' | docker login -u AWS \${ACCOUNT_REGISTRY_PREFIX} --password-stdin
                     """
                 }
             }
